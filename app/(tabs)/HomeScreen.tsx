@@ -22,7 +22,7 @@ export default function HomeScreen() {
   }, [])
 
   const goToSignInScreen = () => {
-    router.replace("/SelectBuildScreen");
+    router.replace("/(auth)/SelectBuildScreen");
   }
 
   return (

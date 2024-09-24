@@ -132,7 +132,7 @@ const SelectBuildScreen = () => {
     ])
 
     const goToHome = () => {
-        router.replace('/BuildScreen')
+        router.replace('/(tabs)/HomeScreen')
     }
 
     return (

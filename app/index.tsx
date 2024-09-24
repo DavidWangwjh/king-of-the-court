@@ -1,12 +1,10 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { useEffect } from 'react';
+import { Redirect, router } from 'expo-router';
+import { useGlobalContext } from '@/context/GlobalProvider';
 
-const index = () => {
-  return (
-    <View>
-      <Text>index</Text>
-    </View>
-  )
+export default function Index() {
+  const { loading, isLoggedIn } = useGlobalContext();
+  if (!loading && isLoggedIn) return <Redirect href="/(tabs)/HomeScreen" />;
+
+  return null;  // No need to render anything, just redirect
 }
-
-export default index

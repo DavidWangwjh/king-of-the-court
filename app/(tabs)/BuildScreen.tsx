@@ -133,6 +133,10 @@ const BuildScreen = () => {
     );
   };
 
+  const saveData = () => {
+    
+  }
+
   return (
     <Container style={styles.screenContainer} direction='column' justify='flex-start' background={Colors.black}>
       {/* Top Tab Selector */}
@@ -251,7 +255,7 @@ const BuildScreen = () => {
         </View>
       )}
 
-      <ActionButton text='save'/>
+      <ActionButton text='save' action={saveData}/>
     </Container>
   );
 };

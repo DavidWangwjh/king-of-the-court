@@ -28,11 +28,11 @@ export default function TabLayout() {
           let iconSize = focused ? 32 : 28; // Example: bigger size when active, smaller when inactive
     
           // Based on the route, return the respective icon component
-          if (route.name === 'build') {
+          if (route.name === 'BuildScreen') {
             return <BuildIcon size={iconSize} color={color} />;
-          } else if (route.name === 'home') {
+          } else if (route.name === 'HomeScreen') {
             return <HomeIcon size={iconSize} color={color} />;
-          } else if (route.name === 'leaderboard') {
+          } else if (route.name === 'LeaderboardScreen') {
             return <LeaderboardIcon size={iconSize} color={color} />;
           }
         },
@@ -40,21 +40,21 @@ export default function TabLayout() {
       tabBarPosition='bottom'
     >
       <Tab.Screen
-        name="build"
+        name="BuildScreen"
         component={BuildScreen}
         options={{
           title: 'Build',
         }}
       />
       <Tab.Screen
-        name="home"
+        name="HomeScreen"
         component={HomeScreen}
         options={{
           title: 'Home',
         }}
       />
       <Tab.Screen
-        name="leaderboard"
+        name="LeaderboardScreen"
         component={LeaderboardScreen}
         options={{
           title: 'Leaderboard',
