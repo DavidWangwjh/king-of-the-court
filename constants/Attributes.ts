@@ -1,4 +1,4 @@
-import { Attributes, Tendencies } from "./Types"
+import { Attributes, Build, Tendencies } from "./Types"
 
 export const ProBuildBaseAttributes: Attributes = {
     'threePointShot': 25,
@@ -60,7 +60,7 @@ export const ShiftySlasherBuildBaseAttributes: Attributes = {
     'stamina': 25
 }
 
-export const BASE_ATTRIBUTE_POINTS = {
+export const STARTER_BUILD_BASE_ATTRIBUTES = {
     'Pro Build': ProBuildBaseAttributes,
     'Sharp Shooter Build': SharpShooterBuildBaseAttributes,
     'Lockdown Defender Build': LockdownDefenderBuildBaseAttributes,
@@ -68,15 +68,10 @@ export const BASE_ATTRIBUTE_POINTS = {
 }
 
 export const STARTER_BUILD_NAMES = {
-    proBuild: 'Pro Build',
-    sharpShooterBuild: 'Sharp Shooter Build',
-    lockdownDefenderBuild: 'Lockdown Defender Build',
-    shiftySlasherBuild: 'Shifty Slasher Build'
-}
-
-export type Build = {
-    name: string,
-    attributes: Attributes
+    PRO_BUILD: 'Pro Build',
+    SHARP_SHOOTER_BUILD: 'Sharp Shooter Build',
+    LOCKDOWN_DEFENDER_BUILD: 'Lockdown Defender Build',
+    SHIFTY_SLASHER_BUILD: 'Shifty Slasher Build'
 }
 
 export const STARTER_BUILDS: Build[] = [
@@ -88,3 +83,5 @@ export const STARTER_BUILDS: Build[] = [
 
 export const MAX_ATTRIBUTE_POINTS = 310;
 export const MAX_TENDENCIES = 100;
+
+export { Build }

@@ -6,7 +6,7 @@ import { user } from '@/constants/TestUser';
 import Container from '@/components/Container';
 import { StyledText } from '@/components/StyledText';
 import Colors from '@/constants/Colors';
-import { MAX_ATTRIBUTE_POINTS, MAX_TENDENCIES, BASE_ATTRIBUTE_POINTS } from '@/constants/Attributes';
+import { MAX_ATTRIBUTE_POINTS, MAX_TENDENCIES, STARTER_BUILD_BASE_ATTRIBUTES } from '@/constants/Attributes';
 import CustomSlider from '@/components/CustomSlider';
 import ActionButton from '@/components/ActionButton';
 
@@ -112,8 +112,8 @@ const BuildScreen = () => {
   
   const SliderItem = ({ label, value, onValueChange }: SliderItemProps) => {
     return (
-      <Container style={styles.sliderItem} direction='column'>
-        <Container style={{width: '100%'}} justify='space-between'>
+      <Container style={styles.sliderItem} >
+        <Container style={{width: '100%'}} direction='row' justify='space-between'>
           <StyledText size={16}>{label}</StyledText>
           <StyledText size={16}>{value}</StyledText>
         </Container>
@@ -126,7 +126,7 @@ const BuildScreen = () => {
           onValueChange={onValueChange}
           minimumTrackTintColor={Colors.primaryOrange}
           thumbTintColor={Colors.primaryOrange}
-          lowerLimit={BASE_ATTRIBUTE_POINTS[user.starterBuild]['threePointShot']}
+          lowerLimit={STARTER_BUILD_BASE_ATTRIBUTES[user.starterBuild]['threePointShot']}
           upperLimit={attributeSliderUpperLimit}
         />
       </Container>
@@ -138,9 +138,9 @@ const BuildScreen = () => {
   }
 
   return (
-    <Container style={styles.screenContainer} direction='column' justify='flex-start' background={Colors.black}>
+    <Container style={styles.screenContainer} justify='flex-start' bgColor={Colors.black}>
       {/* Top Tab Selector */}
-      <View style={styles.tabContainer}>
+      <Container style={styles.tabContainer} direction='row'>
         <TouchableOpacity
           style={[styles.tab, selectedTab === 'attributes' ? styles.activeTab : null]}
           onPress={() => setSelectedTab('attributes')}
@@ -153,7 +153,7 @@ const BuildScreen = () => {
         >
           <StyledText size={14} weight={5}>Tendencies</StyledText>
         </TouchableOpacity>
-      </View>
+      </Container>
 
       {/* Title */}
       <StyledText style={styles.title} weight={5} size={30}>
@@ -268,8 +268,6 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   tabContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
     marginBottom: 20,
   },
   tab: {

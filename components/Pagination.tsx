@@ -17,7 +17,7 @@ const Pagination = (props: PaginationProps) => {
 
     const { builds, paginationIndex, scrollX } = props;
     return (
-        <Container>
+        <Container direction='row'>
             {
                 builds.map((_, index) => {
                     const pgAnimationStyle = useAnimatedStyle(() => {

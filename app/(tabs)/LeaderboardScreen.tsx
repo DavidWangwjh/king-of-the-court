@@ -20,7 +20,7 @@ export default function LeaderboardScreen() {
     const { rank, user} = props;
     const color = rank == 1? Colors.gold : rank == 2? Colors.silver : rank == 3? Colors.bronze : Colors.white;
     return (
-      <Container>
+      <Container direction='row'>
         <StyledText style={styles.leaderboardItemRank} color={color} size={24} weight={7}>{rank}</StyledText>
         <Container style={styles.leaderboardItemProfile}>
           <Profile user={user} imageSize={45} iconSize={16} titleTextSize={16} contentTextSize={14} padding={5}/>
@@ -33,9 +33,9 @@ export default function LeaderboardScreen() {
   const leaderboardChampionsResult = [user, user, user, user, user, user, user, user];
   
   return (
-    <Container style={styles.screenContainer} background={Colors.black} direction='column' justify='flex-start'>
+    <Container style={styles.screenContainer} bgColor={Colors.black} justify='flex-start'>
       <StyledText style={{width: '100%', textAlign: 'center'}} size={36} weight={5}>Season 1</StyledText>
-      <Container style={styles.tabContainer}>
+      <Container style={styles.tabContainer} direction='row'>
         <TouchableOpacity
           style={[styles.tab, selectedTab === 'crowns' ? styles.activeTab : null]}
           onPress={() => setSelectedTab('crowns')}
@@ -49,7 +49,7 @@ export default function LeaderboardScreen() {
           <TrophyIcon size={20} color={Colors.gold}/>
         </TouchableOpacity>
       </Container>
-      <Container style={{width: '100%', paddingBottom: 10}}>
+      <Container style={{width: '100%', paddingBottom: 10}} direction='row'>
         <StyledText style={{width: '20%', textAlign: 'center'}} weight={4} size={24}>#</StyledText>
         <StyledText style={{width: '80%', textAlign: 'center'}} weight={4} size={24}>Player</StyledText>
       </Container>

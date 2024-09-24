@@ -23,42 +23,42 @@ export default function Profile (props: ProfileProps) {
     return (
         (
             user? (
-            <Container style={{ width: '90%', borderRadius: 10, backgroundColor: Colors.primaryOrange, padding: padding }} direction='column' >
-                <Container style={{ gap: 15, padding: padding }}>
+            <Container style={{ width: '90%', borderRadius: 10, padding: padding }} bgColor={Colors.primaryOrange}>
+                <Container style={{ gap: 15, padding: padding }} direction='row'>
                     <View style={{width: imageSize, height: imageSize, borderRadius: imageSize/2, borderColor: Colors.white, borderWidth: 2, backgroundColor: user.profilePicture }}></View>
-                    <Container style={styles.userInfoSubContainer} direction='column' align='flex-start'>
+                    <Container style={styles.userInfoSubContainer} align='flex-start'>
                         <StyledText style={{ color: Colors.white, textDecorationLine: 'underline' }} weight={5} size={titleTextSize}>
                             {user.username}
                         </StyledText>
-                        <Container style={styles.achievementContainer} justify='flex-start' >
-                            <Container style={styles.achievement} >
+                        <Container style={styles.achievementContainer} direction='row' justify='flex-start' >
+                            <Container style={styles.achievement} direction='row'>
                                 <CrownIcon size={iconSize} color={Colors.gold}/>
                                 <StyledText size={contentTextSize} >{user.crowns}</StyledText>
                             </Container>
-                            <Container style={styles.achievement} >
+                            <Container style={styles.achievement} direction='row'>
                                 <TrophyIcon size={iconSize} color={Colors.gold}/>
                                 <StyledText size={contentTextSize} >{user.seasonChampions}</StyledText>
                             </Container>
                         </Container>
                     </Container>
                 </Container>
-                <Container style={styles.userStatsContainer} direction='column'>
-                    <Container style={styles.userStats} justify='space-between'>
+                <Container style={styles.userStatsContainer}>
+                    <Container style={styles.userStats} direction='row' justify='space-between'>
                         <StyledText weight={4} size={contentTextSize}>offense</StyledText>
                         <StyledText size={contentTextSize}>{user.offense}</StyledText>
                     </Container>
-                    <Container style={styles.userStats} justify='space-between'>
+                    <Container style={styles.userStats} direction='row' justify='space-between'>
                         <StyledText weight={4} size={contentTextSize}>defense</StyledText>
                         <StyledText size={contentTextSize}>{user.defense}</StyledText>
                     </Container>
-                    <Container style={styles.userStats} justify='space-between'>
+                    <Container style={styles.userStats} direction='row' justify='space-between'>
                         <StyledText weight={4} size={contentTextSize}>athleticism</StyledText>
                         <StyledText size={contentTextSize}>{user.athleticism}</StyledText>
                     </Container>
                 </Container>
             </Container>
             ) : (
-                <Text>This user doesn't exist</Text>
+                <StyledText>This user doesn't exist</StyledText>
             )
         )
     )

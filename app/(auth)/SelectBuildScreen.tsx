@@ -4,7 +4,7 @@ import Container from '@/components/Container'
 import { StyledText } from '@/components/StyledText'
 import Colors from '@/constants/Colors'
 import ActionButton from '@/components/ActionButton'
-import { ProBuildBaseAttributes, SharpShooterBuildBaseAttributes, LockdownDefenderBuildBaseAttributes, ShiftySlasherBuildBaseAttributes, STARTER_BUILDS, BASE_ATTRIBUTE_POINTS, Build } from '@/constants/Attributes'
+import { STARTER_BUILDS, Build } from '@/constants/Attributes'
 import Animated, { Extrapolation, SharedValue, interpolate, useAnimatedScrollHandler, useAnimatedStyle, useSharedValue } from 'react-native-reanimated'
 import Pagination from '@/components/Pagination'
 import { router } from 'expo-router'
@@ -45,58 +45,58 @@ const ListItem = (props: listItemProps) => {
 
     return (
         <Animated.View style={[styles.listItemContainer, rnAnimatedStyle]}>
-            <Container direction='column' style={styles.buildInfoContainer} background={Colors.primaryOrange}>
-                <Container style={styles.buildTitleContainer} background={Colors.darkOrange}>
+            <Container style={styles.buildInfoContainer} bgColor={Colors.primaryOrange}>
+                <Container style={styles.buildTitleContainer} direction='row' bgColor={Colors.darkOrange}>
                     <StyledText size={22} weight={5}>{build.name}</StyledText>
                 </Container>
                 <StyledText size={20} weight={4}>Offense</StyledText>
-                <Container style={{width: '100%'}} justify='space-between'>
+                <Container style={{width: '100%'}} justify='space-between' direction='row'>
                     <StyledText size={16}>Three-Point Shot</StyledText>
                     <StyledText size={16}>{build.attributes.threePointShot}</StyledText>
                 </Container>
-                <Container style={{width: '100%'}} justify='space-between'>
+                <Container style={{width: '100%'}} justify='space-between' direction='row'>
                     <StyledText size={16}>Mid-Range Shot</StyledText>
                     <StyledText size={16}>{build.attributes.midRangeShot}</StyledText>
                 </Container>
-                <Container style={{width: '100%'}} justify='space-between'>
+                <Container style={{width: '100%'}} justify='space-between' direction='row'>
                     <StyledText size={16}>Close Shot</StyledText>
                     <StyledText size={16}>{build.attributes.closeShot}</StyledText>
                 </Container>
-                <Container style={{width: '100%'}} justify='space-between'>
+                <Container style={{width: '100%'}} justify='space-between' direction='row'>
                     <StyledText size={16}>Layup</StyledText>
                     <StyledText size={16}>{build.attributes.layup}</StyledText>
                 </Container>
-                <Container style={{width: '100%'}} justify='space-between'>
+                <Container style={{width: '100%'}} justify='space-between' direction='row'>
                     <StyledText size={16}>Ball Handle</StyledText>
                     <StyledText size={16}>{build.attributes.ballHandle}</StyledText>
                 </Container>
                 <StyledText>Defense</StyledText>
-                <Container style={{width: '100%'}} justify='space-between'>
+                <Container style={{width: '100%'}} justify='space-between' direction='row'>
                     <StyledText size={16}>Interior Defense</StyledText>
                     <StyledText size={16}>{build.attributes.interiorDefense}</StyledText>
                 </Container>
-                <Container style={{width: '100%'}} justify='space-between'>
+                <Container style={{width: '100%'}} justify='space-between' direction='row'>
                     <StyledText size={16}>Perimeter Defense</StyledText>
                     <StyledText size={16}>{build.attributes.perimeterDefense}</StyledText>
                 </Container>
-                <Container style={{width: '100%'}} justify='space-between'>
+                <Container style={{width: '100%'}} justify='space-between' direction='row'>
                     <StyledText size={16}>Steal</StyledText>
                     <StyledText size={16}>{build.attributes.steal}</StyledText>
                 </Container>
-                <Container style={{width: '100%'}} justify='space-between'>
+                <Container style={{width: '100%'}} justify='space-between' direction='row'>
                     <StyledText size={16}>Block</StyledText>
                     <StyledText size={16}>{build.attributes.block}</StyledText>
                 </Container>
                 <StyledText>Athleticism</StyledText>
-                <Container style={{width: '100%'}} justify='space-between'>
+                <Container style={{width: '100%'}} justify='space-between' direction='row'>
                     <StyledText size={16}>Speed</StyledText>
                     <StyledText size={16}>{build.attributes.speed}</StyledText>
                 </Container>
-                <Container style={{width: '100%'}} justify='space-between'>
+                <Container style={{width: '100%'}} justify='space-between' direction='row'>
                     <StyledText size={16}>Strength</StyledText>
                     <StyledText size={16}>{build.attributes.strength}</StyledText>
                 </Container>
-                <Container style={{width: '100%'}} justify='space-between'>
+                <Container style={{width: '100%'}} justify='space-between' direction='row'>
                     <StyledText size={16}>Stamina</StyledText>
                     <StyledText size={16}>{build.attributes.stamina}</StyledText>
                 </Container>
@@ -136,9 +136,9 @@ const SelectBuildScreen = () => {
     }
 
     return (
-        <Container style={styles.screenContainer} direction='column' background={Colors.black} >
+        <Container style={styles.screenContainer} bgColor={Colors.black} >
             <StyledText weight={4} size={26}>Select your Starter Build</StyledText>
-            <Container>
+            <Container direction='row'>
                 <Animated.FlatList 
                     data={STARTER_BUILDS} 
                     renderItem={({ item, index }) => <ListItem build={item} index={index} scrollX={scrollX}/>}

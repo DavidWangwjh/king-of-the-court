@@ -30,7 +30,7 @@ export default function HomeScreen() {
   }
 
   return (
-    <Container style={styles.screenContainer} direction='column' background={Colors.black}>
+    <Container style={{ flex: 1 }} bgColor={Colors.black}>
       <TouchableOpacity style={styles.logOutButton} onPress={() => goToSignInScreen()}>
         <LogOutIcon size={26} color={Colors.white}/>
       </TouchableOpacity>
@@ -50,9 +50,6 @@ export default function HomeScreen() {
 
 
 const styles = StyleSheet.create({
-  screenContainer: {
-    flex: 1
-  },
   title: {
     lineHeight: 50,
     width: '100%',

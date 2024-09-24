@@ -5,13 +5,7 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
-import { createStackNavigator } from '@react-navigation/stack';
-import TabLayout from './(tabs)/_layout';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import SelectBuildScreen from './(auth)/SelectBuildScreen';
-import CreateUsernameScreen from './(auth)/CreateUsernameScreen';
-import SignInScreen from './(auth)/SignInScreen';
-import { NavigationContainer } from '@react-navigation/native';
 
 import { useColorScheme } from '@/components/useColorScheme';
 import Colors from '@/constants/Colors';

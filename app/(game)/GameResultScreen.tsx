@@ -15,7 +15,7 @@ const GameResultScreen = (props: Props) => {
   }
 
   return (
-    <Container style={styles.screenContainer} direction='column' background={Colors.black} >
+    <Container style={styles.screenContainer} bgColor={Colors.black} >
       <StyledText weight={4} size={26}>Results</StyledText>
       <ActionButton text='Ok' action={goToHome}/>
     </Container>

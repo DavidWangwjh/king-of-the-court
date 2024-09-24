@@ -46,3 +46,8 @@ export type BuildKeys =
 | 'Sharp Shooter Build'
 | 'Lockdown Defender Build'
 | 'Shifty Slasher Build'
+
+export type Build = {
+    name: string,
+    attributes: Attributes
+}

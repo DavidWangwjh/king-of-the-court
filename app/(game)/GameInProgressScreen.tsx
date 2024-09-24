@@ -15,7 +15,7 @@ const GameInProgressScreen = (props: Props) => {
   }
 
   return (
-    <Container style={styles.screenContainer} direction='column' background={Colors.black} >
+    <Container style={styles.screenContainer} bgColor={Colors.black} >
       <StyledText weight={4} size={26}>Game in progress</StyledText>
       <ActionButton text='Next' action={goToResult}/>
     </Container>

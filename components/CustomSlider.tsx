@@ -4,7 +4,7 @@ import Container from './Container'
 import { StyledText } from './StyledText'
 import Slider from '@react-native-community/slider'
 import Colors from '@/constants/Colors'
-import { BASE_ATTRIBUTE_POINTS } from '@/constants/Attributes'
+import { STARTER_BUILD_BASE_ATTRIBUTES } from '@/constants/Attributes'
 import { user } from '@/constants/TestUser'
 import { AttributeKeys } from '@/constants/Types'
 
@@ -21,8 +21,8 @@ const CustomSlider = (props: CustomSliderProps) => {
     const {label, attributeKey, value, onValueChange, upperLimit} = props;
 
     return (
-        <Container style={styles.sliderItem} direction='column'>
-            <Container style={{width: '100%'}} justify='space-between'>
+        <Container style={styles.sliderItem} >
+            <Container style={{width: '100%'}}  direction='row' justify='space-between'>
             <StyledText size={16}>{label}</StyledText>
             <StyledText size={16}>{value}</StyledText>
             </Container>
@@ -35,7 +35,7 @@ const CustomSlider = (props: CustomSliderProps) => {
                 onValueChange={onValueChange}
                 minimumTrackTintColor={Colors.primaryOrange}
                 thumbTintColor={Colors.primaryOrange}
-                lowerLimit={BASE_ATTRIBUTE_POINTS[user.starterBuild][attributeKey]}
+                lowerLimit={STARTER_BUILD_BASE_ATTRIBUTES[user.starterBuild][attributeKey]}
                 upperLimit={upperLimit}
             />
         </Container>
