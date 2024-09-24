@@ -7,6 +7,8 @@ import Container from '@/components/Container';
 import { StyledText } from '@/components/StyledText';
 import Colors from '@/constants/Colors';
 import { MAX_ATTRIBUTE_POINTS, MAX_TENDENCIES, BASE_ATTRIBUTE_POINTS } from '@/constants/Attributes';
+import CustomSlider from '@/components/CustomSlider';
+import ActionButton from '@/components/ActionButton';
 
 const BuildScreen = () => {
   const [selectedTab, setSelectedTab] = useState('attributes'); // To handle tab switching
@@ -40,18 +42,18 @@ const BuildScreen = () => {
   useEffect(() => {
     if (user) {
       setAttributes({
-        'threePointShot': user.attributes.threePointShot,
-        'midRangeShot': user.attributes.midRangeShot,
-        'closeShot': user.attributes.closeShot,
-        'layup': user.attributes.layup,
-        'ballHandle': user.attributes.ballHandle,
-        'interiorDefense': user.attributes.interiorDefense,
-        'perimeterDefense': user.attributes.perimeterDefense,
-        'steal': user.attributes.steal,
-        'block': user.attributes.block,
-        'speed': user.attributes.speed,
-        'strength': user.attributes.strength,
-        'stamina': user.attributes.stamina,
+        threePointShot: user.attributes.threePointShot,
+        midRangeShot: user.attributes.midRangeShot,
+        closeShot: user.attributes.closeShot,
+        layup: user.attributes.layup,
+        ballHandle: user.attributes.ballHandle,
+        interiorDefense: user.attributes.interiorDefense,
+        perimeterDefense: user.attributes.perimeterDefense,
+        steal: user.attributes.steal,
+        block: user.attributes.block,
+        speed: user.attributes.speed,
+        strength: user.attributes.strength,
+        stamina: user.attributes.stamina,
       });
 
       setTendencies({
@@ -78,33 +80,37 @@ const BuildScreen = () => {
   const [attributeSliderUpperLimit, setAttributeSliderUpperLimit] = useState<number>(100);
 
   const handleAttributeChange = (key: AttributeKeys, value: number) => {
-    const newTotal = totalAttributePoints - attributes[key] + value;
-    if (newTotal <= MAX_ATTRIBUTE_POINTS) {
+    const pointsLeft = MAX_ATTRIBUTE_POINTS - totalAttributePoints - attributes[key] + value
+    if (pointsLeft >= 0) {
       setAttributes((prev) => ({ ...prev, [key]: value }));
-    } else {
-      console.warn('Exceeded max attribute points!');
     }
-    //setAttributeSliderUpperLimit(Math.min(MAX_ATTRIBUTE_POINTS - totalAttributePoints, 100));
+    setAttributeSliderUpperLimit(Math.min(100, value + pointsLeft));
   };
 
   // Function to handle tendency change and check if within max limit
   const handleTendencyChange = (key: TendencyKeys, value: number) => {
-    const newTotal = totalTendencies - tendencies[key] + value;
-    if (newTotal <= MAX_TENDENCIES) {
-      setTendencies((prev) => ({ ...prev, [key]: value }));
-    } else {
-      console.warn('Exceeded max tendencies points!');
-    }
+    // const newTotal = totalTendencies - tendencies[key] + value;
+    // if (newTotal <= MAX_TENDENCIES) {
+    //   setTendencies((prev) => ({ ...prev, [key]: value }));
+    // } else {
+    //   console.warn('Exceeded max tendencies points!');
+    // }
+    setTendencies((prev) => ({ ...prev, [key]: value }));
   };
 
   type SliderItemProps = {
     label: string;
-    attributeKey?: AttributeKeys;
     value: number;
     onValueChange: (value: number) => void;
   }
+
+  // <SliderItem
+  //   label="Three-Point Shot"
+  //   value={attributes.threePointShot}
+  //   onValueChange={(val: number) => handleAttributeChange('threePointShot', val)}
+  // />
   
-  const SliderItem = ({ label, attributeKey='threePointShot', value, onValueChange }: SliderItemProps) => {
+  const SliderItem = ({ label, value, onValueChange }: SliderItemProps) => {
     return (
       <Container style={styles.sliderItem} direction='column'>
         <Container style={{width: '100%'}} justify='space-between'>
@@ -120,8 +126,8 @@ const BuildScreen = () => {
           onValueChange={onValueChange}
           minimumTrackTintColor={Colors.primaryOrange}
           thumbTintColor={Colors.primaryOrange}
-          // lowerLimit={BASE_ATTRIBUTE_POINTS[user.starterBuild][attributeKey]}
-          // upperLimit={attributeSliderUpperLimit}
+          lowerLimit={BASE_ATTRIBUTE_POINTS[user.starterBuild]['threePointShot']}
+          upperLimit={attributeSliderUpperLimit}
         />
       </Container>
     );
@@ -135,13 +141,13 @@ const BuildScreen = () => {
           style={[styles.tab, selectedTab === 'attributes' ? styles.activeTab : null]}
           onPress={() => setSelectedTab('attributes')}
         >
-          <Text style={styles.tabText}>Attributes</Text>
+          <StyledText size={14} weight={5}>Attributes</StyledText>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.tab, selectedTab === 'tendencies' ? styles.activeTab : null]}
           onPress={() => setSelectedTab('tendencies')}
         >
-          <Text style={styles.tabText}>Tendencies</Text>
+          <StyledText size={14} weight={5}>Tendencies</StyledText>
         </TouchableOpacity>
       </View>
 
@@ -161,9 +167,9 @@ const BuildScreen = () => {
       {selectedTab === 'attributes' ? (
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1 }}>
           <StyledText weight={4} size={20} style={styles.category}>Offense</StyledText>
-          <SliderItem
+          <CustomSlider label="Three-Point Shot" attributeKey='threePointShot' value={attributes.threePointShot} onValueChange={(val: number) => handleAttributeChange('threePointShot', val)} upperLimit={100}/>
+          {/* <SliderItem
             label="Three-Point Shot"
-            attributeKey='threePointShot'
             value={attributes.threePointShot}
             onValueChange={(val: number) => handleAttributeChange('threePointShot', val)}
           />
@@ -218,7 +224,7 @@ const BuildScreen = () => {
             label="Stamina"
             value={attributes.stamina}
             onValueChange={(val: number) => handleAttributeChange('stamina', val)}
-          />
+          /> */}
         </ScrollView>
       ) : (
         <View>
@@ -245,10 +251,7 @@ const BuildScreen = () => {
         </View>
       )}
 
-      {/* Save Button */}
-      <TouchableOpacity style={styles.saveButton}>
-        <StyledText weight={6} size={18}>Save</StyledText>
-      </TouchableOpacity>
+      <ActionButton text='save'/>
     </Container>
   );
 };
@@ -277,10 +280,6 @@ const styles = StyleSheet.create({
   activeTab: {
     backgroundColor: '#F2690D',
   },
-  tabText: {
-    color: '#FFFFFF',
-    fontWeight: 'bold',
-  },
   title: {
     textAlign: 'center',
     marginBottom: 10,
@@ -294,15 +293,6 @@ const styles = StyleSheet.create({
   },
   slider: {
     width: '100%'
-  },
-  saveButton: {
-    width: '80%',
-    backgroundColor: Colors.primaryOrange,
-    padding: 10,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 20,
   },
   category: {
     width: '100%',

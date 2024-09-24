@@ -36,3 +36,10 @@ export function TrophyIcon(props: {
 }) {
   return <FontAwesome5 name='trophy' {...props}/>;
 }
+
+export function LogOutIcon(props: {
+  size: number;
+  color: string;
+}) {
+return <Entypo name='log-out' {...props}/>;
+}

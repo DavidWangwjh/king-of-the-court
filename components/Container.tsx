@@ -2,7 +2,7 @@ import { StyleSheet, View, ViewStyle } from 'react-native';
 import React from 'react';
 
 type ContainerProps = {
-  children: React.ReactNode;  // to accept children components
+  children?: React.ReactNode;  // to accept children components
   direction?: ViewStyle['flexDirection'];  // Custom prop instead of `flexDirection`
   justify?: ViewStyle['justifyContent'];   // Custom prop instead of `justifyContent`
   align?: ViewStyle['alignItems'];         // Custom prop instead of `alignItems`
@@ -21,12 +21,12 @@ const Container = ({
   return (
     <View
       style={[
-        styles.container,
         {
-            flexDirection: direction,  // Map custom `direction` prop to `flexDirection`
-            justifyContent: justify,   // Map custom `justify` prop to `justifyContent`
-            alignItems: align,         // Map custom `align` prop to `alignItems`
-            backgroundColor: background,  // Map custom `background` prop to `backgroundColor`
+          display: 'flex',
+          flexDirection: direction,  // Map custom `direction` prop to `flexDirection`
+          justifyContent: justify,   // Map custom `justify` prop to `justifyContent`
+          alignItems: align,         // Map custom `align` prop to `alignItems`
+          backgroundColor: background,  // Map custom `background` prop to `backgroundColor`
         },
         style, // Apply any additional styles passed
       ]}
@@ -37,9 +37,3 @@ const Container = ({
 };
 
 export default Container;
-
-const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-  },
-});

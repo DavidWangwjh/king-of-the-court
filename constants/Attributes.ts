@@ -67,5 +67,24 @@ export const BASE_ATTRIBUTE_POINTS = {
     'Shifty Slasher Build': ShiftySlasherBuildBaseAttributes
 }
 
-export const MAX_ATTRIBUTE_POINTS = 800;
+export const STARTER_BUILD_NAMES = {
+    proBuild: 'Pro Build',
+    sharpShooterBuild: 'Sharp Shooter Build',
+    lockdownDefenderBuild: 'Lockdown Defender Build',
+    shiftySlasherBuild: 'Shifty Slasher Build'
+}
+
+export type Build = {
+    name: string,
+    attributes: Attributes
+}
+
+export const STARTER_BUILDS: Build[] = [
+    {name: 'Pro', attributes: ProBuildBaseAttributes},
+    {name: 'Sharp Shooter', attributes: SharpShooterBuildBaseAttributes},
+    {name: 'Lockdown Defender', attributes: LockdownDefenderBuildBaseAttributes},
+    {name: 'Shifty Slasher', attributes: ShiftySlasherBuildBaseAttributes}
+]
+
+export const MAX_ATTRIBUTE_POINTS = 310;
 export const MAX_TENDENCIES = 100;

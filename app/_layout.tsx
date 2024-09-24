@@ -8,6 +8,10 @@ import 'react-native-reanimated';
 import { createStackNavigator } from '@react-navigation/stack';
 import TabLayout from './(tabs)/_layout';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import SelectBuildScreen from './(auth)/SelectBuildScreen';
+import CreateUsernameScreen from './(auth)/CreateUsernameScreen';
+import SignInScreen from './(auth)/SignInScreen';
+import { NavigationContainer } from '@react-navigation/native';
 
 import { useColorScheme } from '@/components/useColorScheme';
 import Colors from '@/constants/Colors';
@@ -58,22 +62,16 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
-  const Stack = createStackNavigator();
 
   return (
     <SafeAreaView edges={['top']} style={{ flex: 1 , backgroundColor: Colors.black, }}>
-        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-          <Stack.Navigator
-            initialRouteName="(tabs)"
-            screenOptions={{
-              // Explicitly set the background color for all screens inside the stack
-              cardStyle: { backgroundColor: Colors.black },
-            }}
-          >
-            <Stack.Screen name="(tabs)" component={TabLayout} options={{ headerShown: false }} />
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="(auth)" options={{ headerShown: false }} />
             {/* <Stack.Screen name="modal" options={{ presentation: 'modal' }} /> */}
-          </Stack.Navigator>
-        </ThemeProvider>
+          </Stack>
+      </ThemeProvider>
     </SafeAreaView>
   );
 }

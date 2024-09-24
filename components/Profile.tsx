@@ -9,46 +9,51 @@ import Container from './Container';
 
 type ProfileProps = {
     user: User | null
+    imageSize: number
+    iconSize: number
+    titleTextSize: number
+    contentTextSize: number
+    padding: number
 };
 
 export default function Profile (props: ProfileProps) {
 
-    const { user } = props;
+    const { user, imageSize, iconSize, titleTextSize, contentTextSize, padding } = props;
 
     return (
         (
             user? (
-            <Container style={styles.profileContainer} direction='column' >
-                <Container style={styles.userInfoContainer}>
-                    <View style={{width: 60, height: 60, borderRadius: 30, borderColor: Colors.white, borderWidth: 2, backgroundColor: user.profilePicture }}></View>
+            <Container style={{ width: '90%', borderRadius: 10, backgroundColor: Colors.primaryOrange, padding: padding }} direction='column' >
+                <Container style={{ gap: 15, padding: padding }}>
+                    <View style={{width: imageSize, height: imageSize, borderRadius: imageSize/2, borderColor: Colors.white, borderWidth: 2, backgroundColor: user.profilePicture }}></View>
                     <Container style={styles.userInfoSubContainer} direction='column' align='flex-start'>
-                        <StyledText style={{ color: Colors.white, textDecorationLine: 'underline' }} weight={5} size={24}>
+                        <StyledText style={{ color: Colors.white, textDecorationLine: 'underline' }} weight={5} size={titleTextSize}>
                             {user.username}
                         </StyledText>
                         <Container style={styles.achievementContainer} justify='flex-start' >
                             <Container style={styles.achievement} >
-                                <CrownIcon size={20} color={Colors.gold}/>
-                                <StyledText style={{fontSize: 20}} >{user.crowns}</StyledText>
+                                <CrownIcon size={iconSize} color={Colors.gold}/>
+                                <StyledText size={contentTextSize} >{user.crowns}</StyledText>
                             </Container>
                             <Container style={styles.achievement} >
-                                <TrophyIcon size={20} color={Colors.gold}/>
-                                <StyledText style={{fontSize: 20}} >{user.seasonChampions}</StyledText>
+                                <TrophyIcon size={iconSize} color={Colors.gold}/>
+                                <StyledText size={contentTextSize} >{user.seasonChampions}</StyledText>
                             </Container>
                         </Container>
                     </Container>
                 </Container>
                 <Container style={styles.userStatsContainer} direction='column'>
                     <Container style={styles.userStats} justify='space-between'>
-                        <StyledText weight={4}>offense</StyledText>
-                        <StyledText>{user.offense}</StyledText>
+                        <StyledText weight={4} size={contentTextSize}>offense</StyledText>
+                        <StyledText size={contentTextSize}>{user.offense}</StyledText>
                     </Container>
                     <Container style={styles.userStats} justify='space-between'>
-                        <StyledText weight={4}>defense</StyledText>
-                        <StyledText>{user.defense}</StyledText>
+                        <StyledText weight={4} size={contentTextSize}>defense</StyledText>
+                        <StyledText size={contentTextSize}>{user.defense}</StyledText>
                     </Container>
                     <Container style={styles.userStats} justify='space-between'>
-                        <StyledText weight={4}>athleticism</StyledText>
-                        <StyledText>{user.athleticism}</StyledText>
+                        <StyledText weight={4} size={contentTextSize}>athleticism</StyledText>
+                        <StyledText size={contentTextSize}>{user.athleticism}</StyledText>
                     </Container>
                 </Container>
             </Container>
@@ -64,7 +69,6 @@ const styles = StyleSheet.create({
         width: '90%',
         borderRadius: 10,
         backgroundColor: Colors.primaryOrange,
-        padding: 10,
     },
     userInfoContainer: {
         gap: 15,
