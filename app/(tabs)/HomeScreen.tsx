@@ -25,6 +25,10 @@ export default function HomeScreen() {
     router.replace("/(auth)/SelectBuildScreen");
   }
 
+  const playGame = () => {
+    router.replace("/(game)/GameInProgressScreen");
+  }
+
   return (
     <Container style={styles.screenContainer} direction='column' background={Colors.black}>
       <TouchableOpacity style={styles.logOutButton} onPress={() => goToSignInScreen()}>
@@ -32,11 +36,14 @@ export default function HomeScreen() {
       </TouchableOpacity>
       <StyledText style={styles.title} weight={7} size={36}>King of The Court</StyledText>
       <Profile user={currentUser} imageSize={60} iconSize={20} titleTextSize={24} contentTextSize={20} padding={10}/>
-      <Image
-        style={styles.image}
-        source={basketball}
-        transition={1000}
-      />
+      <TouchableOpacity style={styles.playButton} onPress={playGame}>
+        <Image
+          style={styles.image}
+          source={basketball}
+          transition={1000}
+        />
+      </TouchableOpacity>
+      
     </Container>
   );
 }
@@ -58,10 +65,14 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
-  image: {
+  playButton: {
     width: 200,
     height: 200,
     marginTop: 50
+  },
+  image: {
+    width: '100%',
+    height: '100%'
   },
   logOutButton: {
     position: 'absolute',
