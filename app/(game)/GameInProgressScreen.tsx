@@ -5,16 +5,18 @@ import { StyledText } from '@/components/StyledText'
 import Colors from '@/constants/Colors'
 import ActionButton from '@/components/ActionButton'
 import { router } from 'expo-router'
-import { gameLog } from '@/constants/TestData'
-import { FlashList } from "@shopify/flash-list";
+import { gameLog, user } from '@/constants/TestData'
 import { CrownIcon } from '@/assets/icons'
 
-type Props = {}
+const GameInProgressScreen = () => {
 
-const GameInProgressScreen = (props: Props) => {
+  const gameResults = { results: [{player: user, score: 11}, {player: user, score: 10}, {player: user, score: 8}, {player: user, score: 7}, {player: user, score: 4}, {player: user, score: 2}, {player: user, score: 1}]}
 
   const goToResult = () => {
-    router.replace('/(game)/GameResultScreen')
+    router.push({
+      pathname: '/(game)/GameResultScreen',
+      params: { results: JSON.stringify(gameResults) },
+    });
   }
 
   // State to keep track of the logs displayed on the screen
@@ -32,7 +34,7 @@ const GameInProgressScreen = (props: Props) => {
         setGameFinished(true);
         clearInterval(intervalId); // Clear interval when all logs are displayed
       }
-    }, 1000); // Delay between each log being added (1000ms = 1 second)
+    }, 100); // Delay between each log being added (1000ms = 1 second)
 
     // Clean up the interval on component unmount
     return () => clearInterval(intervalId);
@@ -42,13 +44,13 @@ const GameInProgressScreen = (props: Props) => {
 
   const ListItem = ({item, index}: {item: any, index: number}) => {
     return (
-      <Container style={styles.listItemContainer} direction='row'>
+      <Container style={{width: '100%', marginTop: 20, marginBottom: index === gameLog.length-1? 20 : 0}} direction='row'>
         <Container style={styles.profilePictureContainer}>
           <View style={{width: 45, height: 45, borderRadius: 25, borderColor: Colors.white, borderWidth: 2, backgroundColor: item.profilePicture }}></View>
         </Container>
         <Container direction='row' style={styles.playInfoContainer} bgColor={index == displayedLogs.length-1? Colors.primaryOrange : Colors.secondaryOrange}>
           <Container style={styles.playInfoLeftContainer} align='flex-start'>
-            <StyledText size={16}>{item.username}</StyledText>
+            <StyledText size={16} weight={5} style={{textDecorationLine: 'underline'}}>{item.username}</StyledText>
             <StyledText size={16}>{item.play}</StyledText>
           </Container>
           <Container style={styles.playInfoRightContainer} bgColor={item.final || item.score? Colors.darkOrange : 'transparent'}> 
@@ -69,7 +71,7 @@ const GameInProgressScreen = (props: Props) => {
   return (
     <Container style={styles.screenContainer} bgColor={Colors.black} >
       <StyledText weight={4} size={26} style={{marginBottom: 10}}>Game in progress</StyledText>
-      <Container direction='col' style={{width: '90%', height: '70%' }}>
+      <Container direction='col' style={styles.listContainer}>
         <FlatList
           ref={flatListRef}
           data={displayedLogs}
@@ -78,6 +80,7 @@ const GameInProgressScreen = (props: Props) => {
           )}
           showsVerticalScrollIndicator={false}
           onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
+          contentContainerStyle={{ paddingHorizontal: 10 }}
         />
       </Container>
       {
@@ -93,12 +96,20 @@ const styles = StyleSheet.create({
   screenContainer: {
     flex: 1
   },
+  listContainer: { 
+    width: '90%', 
+    height: '70%', 
+    borderWidth: 2, 
+    borderColor: Colors.white, 
+    borderRadius: 10
+  },
   listItemContainer: {
     width: '100%',
     marginVertical: 5
   },
   profilePictureContainer: {
-    width: '20%',
+    maxWidth: '20%',
+    marginRight: 10,
   },
   playInfoContainer: {
     width: '80%',

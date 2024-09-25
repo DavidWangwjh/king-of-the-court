@@ -283,11 +283,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#F2690D',
   },
   title: {
-    textAlign: 'center',
     marginBottom: 10,
   },
   subtitle: {
-    textAlign: 'center',
     marginBottom: 20,
   },
   sliderItem: {
@@ -298,6 +296,5 @@ const styles = StyleSheet.create({
   },
   category: {
     width: '100%',
-    textAlign: 'center'
   }
 });

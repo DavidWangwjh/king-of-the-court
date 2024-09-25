@@ -1,5 +1,5 @@
 import React from 'react';
-import { Entypo, FontAwesome5, FontAwesome6, MaterialIcons } from '@expo/vector-icons';
+import { Entypo, FontAwesome5, FontAwesome6, MaterialIcons, Ionicons } from '@expo/vector-icons';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 export function BuildIcon(props: {
@@ -41,5 +41,12 @@ export function LogOutIcon(props: {
   size: number;
   color: string;
 }) {
-return <Entypo name='log-out' {...props}/>;
+  return <Entypo name='log-out' {...props}/>;
+}
+
+export function BackIcon(props: {
+  size: number;
+  color: string;
+}) {
+  return <Ionicons name='chevron-back' {...props}/>;
 }

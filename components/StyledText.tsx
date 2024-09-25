@@ -13,5 +13,5 @@ const fontWeights: { [key: number]: string } = {
 
 export function StyledText(props: TextProps) {
   const validatedWeight = (props.weight && props.weight >= 1 && props.weight <= 7) ? props.weight : 3;
-  return <Text {...props} style={[props.style, { fontFamily: fontWeights[validatedWeight], color: props.color?? Colors.white, fontSize: props.size?? 20}]} />;
+  return <Text {...props} style={[props.style, { textAlign: 'center', fontFamily: fontWeights[validatedWeight], color: props.color?? Colors.white, fontSize: props.size?? 20}]} />;
 }

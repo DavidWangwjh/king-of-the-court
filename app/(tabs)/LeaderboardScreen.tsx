@@ -34,7 +34,7 @@ export default function LeaderboardScreen() {
   
   return (
     <Container style={styles.screenContainer} bgColor={Colors.black} justify='flex-start'>
-      <StyledText style={{width: '100%', textAlign: 'center'}} size={36} weight={5}>Season 1</StyledText>
+      <StyledText style={{width: '100%'}} size={36} weight={5}>Season 1</StyledText>
       <Container style={styles.tabContainer} direction='row'>
         <TouchableOpacity
           style={[styles.tab, selectedTab === 'crowns' ? styles.activeTab : null]}
@@ -50,8 +50,8 @@ export default function LeaderboardScreen() {
         </TouchableOpacity>
       </Container>
       <Container style={{width: '100%', paddingBottom: 10}} direction='row'>
-        <StyledText style={{width: '20%', textAlign: 'center'}} weight={4} size={24}>#</StyledText>
-        <StyledText style={{width: '80%', textAlign: 'center'}} weight={4} size={24}>Player</StyledText>
+        <StyledText style={{width: '20%'}} weight={4} size={24}>#</StyledText>
+        <StyledText style={{width: '80%'}} weight={4} size={24}>Player</StyledText>
       </Container>
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1, gap: 20 }}>
         {
@@ -97,7 +97,6 @@ const styles = StyleSheet.create({
   },
   leaderboardItemRank: {
     width: '20%',
-    textAlign: 'center'
   },
   leaderboardItemProfile: {
     width: '80%'
