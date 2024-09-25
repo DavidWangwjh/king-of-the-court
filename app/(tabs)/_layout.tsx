@@ -4,12 +4,8 @@ import BuildScreen from './BuildScreen';
 import HomeScreen from './HomeScreen';
 import LeaderboardScreen from './LeaderboardScreen';
 import Colors from '@/constants/Colors';
-import { getUser } from '@/service/userService';
-import { Text } from 'react-native';
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { User } from '@/constants/Types';
-
 const Tab = createMaterialTopTabNavigator();
 
 export default function TabLayout() {

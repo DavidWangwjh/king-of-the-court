@@ -59,7 +59,7 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <SafeAreaView edges={['top']} style={{ flex: 1 , backgroundColor: Colors.black, }}>
+    // <SafeAreaView edges={['top']} style={{ flex: 1 , backgroundColor: Colors.halfBlack, }}>
       <GlobalProvider>
         <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
             <Stack>
@@ -71,6 +71,6 @@ function RootLayoutNav() {
             </Stack>
         </ThemeProvider>
       </GlobalProvider>
-    </SafeAreaView>
+    // </SafeAreaView>
   );
 }

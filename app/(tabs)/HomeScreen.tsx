@@ -12,6 +12,9 @@ import basketball from "@/assets/basketball.png";
 import Container from '@/components/Container';
 import { LogOutIcon } from '@/assets/icons';
 import { router } from "expo-router";
+import { LinearGradient } from 'expo-linear-gradient';
+import TabScreenBackground from '@/components/TabScreenBackground';
+import TabScreenContainer from '@/components/TabScreenContainer';
 
 export default function HomeScreen() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -30,7 +33,7 @@ export default function HomeScreen() {
   }
 
   return (
-    <Container style={{ flex: 1 }} bgColor={Colors.black}>
+    <TabScreenContainer>
       <TouchableOpacity style={styles.logOutButton} onPress={() => goToSignInScreen()}>
         <LogOutIcon size={26} color={Colors.white}/>
       </TouchableOpacity>
@@ -43,7 +46,7 @@ export default function HomeScreen() {
           transition={1000}
         />
       </TouchableOpacity>
-    </Container>
+    </TabScreenContainer>
   );
 }
 
@@ -73,5 +76,5 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 10,
     top: 5
-  }
+  },
 });

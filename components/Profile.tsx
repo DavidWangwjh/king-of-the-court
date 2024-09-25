@@ -23,7 +23,7 @@ export default function Profile (props: ProfileProps) {
     return (
         (
             user? (
-            <Container style={{ width: '90%', borderRadius: 10, padding: padding }} bgColor={Colors.primaryOrange}>
+            <Container style={{ width: '90%', borderRadius: 10, padding: padding }} bgColor={Colors.secondaryOrange}>
                 <Container style={{ gap: 15, padding: padding }} direction='row'>
                     <View style={{width: imageSize, height: imageSize, borderRadius: imageSize/2, borderColor: Colors.white, borderWidth: 2, backgroundColor: user.profilePicture }}></View>
                     <Container style={styles.userInfoSubContainer} align='flex-start'>

@@ -21,6 +21,7 @@ export default {
   secondaryOrange: 'rgba(242, 105, 13, 0.6)', // 60% opacity of primary orange
   darkOrange: '#D55000',
   black: '#24170F',
+  halfBlack: 'rgba(36, 23, 16, 0.5)',
   gold: '#FFD700',
   silver: '#C0C0C0',
   bronze: '#CD7F32',

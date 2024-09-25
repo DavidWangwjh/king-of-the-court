@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { User } from '@/constants/Types';
 import Profile from '@/components/Profile';
 import { user } from '@/constants/TestData';
+import TabScreenContainer from '@/components/TabScreenContainer';
 
 export default function LeaderboardScreen() {
   const [selectedTab, setSelectedTab] = useState('crowns');
@@ -33,7 +34,7 @@ export default function LeaderboardScreen() {
   const leaderboardChampionsResult = [user, user, user, user, user, user, user, user];
   
   return (
-    <Container style={styles.screenContainer} bgColor={Colors.black} justify='flex-start'>
+    <TabScreenContainer>
       <StyledText style={{width: '100%'}} size={36} weight={5}>Season 1</StyledText>
       <Container style={styles.tabContainer} direction='row'>
         <TouchableOpacity
@@ -67,7 +68,7 @@ export default function LeaderboardScreen() {
           
         }
       </ScrollView>
-    </Container>
+    </TabScreenContainer>
   );
 }
 

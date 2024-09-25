@@ -9,6 +9,8 @@ import Colors from '@/constants/Colors';
 import { MAX_ATTRIBUTE_POINTS, MAX_TENDENCIES, STARTER_BUILD_BASE_ATTRIBUTES } from '@/constants/Attributes';
 import CustomSlider from '@/components/CustomSlider';
 import ActionButton from '@/components/ActionButton';
+import TabScreenBackground from '@/components/TabScreenBackground';
+import TabScreenContainer from '@/components/TabScreenContainer';
 
 const BuildScreen = () => {
   const [selectedTab, setSelectedTab] = useState('attributes'); // To handle tab switching
@@ -138,7 +140,7 @@ const BuildScreen = () => {
   }
 
   return (
-    <Container style={styles.screenContainer} justify='flex-start' bgColor={Colors.black}>
+    <TabScreenContainer>
       {/* Top Tab Selector */}
       <Container style={styles.tabContainer} direction='row'>
         <TouchableOpacity
@@ -256,7 +258,7 @@ const BuildScreen = () => {
       )}
 
       <ActionButton text='save' action={saveData}/>
-    </Container>
+    </TabScreenContainer>
   );
 };
 
@@ -264,11 +266,14 @@ export default BuildScreen;
 
 const styles = StyleSheet.create({
   screenContainer: {
-    padding: 20,
-    height: '100%'
+    display: 'flex', 
+    flex: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center',
   },
   tabContainer: {
     marginBottom: 20,
+    paddingHorizontal: 20
   },
   tab: {
     flex: 1,

@@ -15,7 +15,7 @@ const Container = ({
   direction,
   justify = 'center',
   align = 'center',
-  bgColor = 'transparent',
+  bgColor,
   style,
 }: ContainerProps) => {
   return (
@@ -26,8 +26,8 @@ const Container = ({
           flexDirection: direction == 'row'? 'row' : 'column',  // Map custom `direction` prop to `flexDirection`
           justifyContent: justify,   // Map custom `justify` prop to `justifyContent`
           alignItems: align,         // Map custom `align` prop to `alignItems`
-          backgroundColor: bgColor,  // Map custom `background` prop to `backgroundColor`
         },
+        bgColor ? { backgroundColor: bgColor } : {},
         style, // Apply any additional styles passed
       ]}
     >
