@@ -171,8 +171,8 @@ const BuildScreen = () => {
       {selectedTab === 'attributes' ? (
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1 }}>
           <StyledText weight={4} size={20} style={styles.category}>Offense</StyledText>
-          <CustomSlider label="Three-Point Shot" attributeKey='threePointShot' value={attributes.threePointShot} onValueChange={(val: number) => handleAttributeChange('threePointShot', val)} upperLimit={100}/>
-          {/* <SliderItem
+          {/* <CustomSlider label="Three-Point Shot" attributeKey='threePointShot' value={attributes.threePointShot} onValueChange={(val: number) => handleAttributeChange('threePointShot', val)} upperLimit={100}/> */}
+          <SliderItem
             label="Three-Point Shot"
             value={attributes.threePointShot}
             onValueChange={(val: number) => handleAttributeChange('threePointShot', val)}
@@ -228,7 +228,7 @@ const BuildScreen = () => {
             label="Stamina"
             value={attributes.stamina}
             onValueChange={(val: number) => handleAttributeChange('stamina', val)}
-          /> */}
+          />
         </ScrollView>
       ) : (
         <View>

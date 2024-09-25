@@ -35,7 +35,7 @@ export default function HomeScreen() {
         <LogOutIcon size={26} color={Colors.white}/>
       </TouchableOpacity>
       <StyledText style={styles.title} weight={7} size={36}>King of The Court</StyledText>
-      <Profile user={currentUser} imageSize={60} iconSize={20} titleTextSize={24} contentTextSize={20} padding={10}/>
+      <Profile user={currentUser} imageSize={70} iconSize={20} titleTextSize={24} contentTextSize={20} padding={10}/>
       <TouchableOpacity style={styles.playButton} onPress={playGame}>
         <Image
           style={styles.image}
@@ -43,7 +43,6 @@ export default function HomeScreen() {
           transition={1000}
         />
       </TouchableOpacity>
-      
     </Container>
   );
 }

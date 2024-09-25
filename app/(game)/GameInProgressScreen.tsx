@@ -34,7 +34,7 @@ const GameInProgressScreen = () => {
         setGameFinished(true);
         clearInterval(intervalId); // Clear interval when all logs are displayed
       }
-    }, 100); // Delay between each log being added (1000ms = 1 second)
+    }, 800); // Delay between each log being added (1000ms = 1 second)
 
     // Clean up the interval on component unmount
     return () => clearInterval(intervalId);
@@ -44,7 +44,7 @@ const GameInProgressScreen = () => {
 
   const ListItem = ({item, index}: {item: any, index: number}) => {
     return (
-      <Container style={{width: '100%', marginTop: 20, marginBottom: index === gameLog.length-1? 20 : 0}} direction='row'>
+      <Container style={{width: '100%', marginBottom: 20, marginTop: index === 0? 20 : 0}} direction='row'>
         <Container style={styles.profilePictureContainer}>
           <View style={{width: 45, height: 45, borderRadius: 25, borderColor: Colors.white, borderWidth: 2, backgroundColor: item.profilePicture }}></View>
         </Container>
