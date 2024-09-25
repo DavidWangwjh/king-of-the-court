@@ -5,7 +5,7 @@ import { StyledText } from './StyledText'
 import Slider from '@react-native-community/slider'
 import Colors from '@/constants/Colors'
 import { STARTER_BUILD_BASE_ATTRIBUTES } from '@/constants/Attributes'
-import { user } from '@/constants/TestUser'
+import { user } from '@/constants/TestData'
 import { AttributeKeys } from '@/constants/Types'
 
 type CustomSliderProps = {

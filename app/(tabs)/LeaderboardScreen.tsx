@@ -7,7 +7,7 @@ import { CrownIcon, TrophyIcon } from '@/assets/icons';
 import { useState } from 'react';
 import { User } from '@/constants/Types';
 import Profile from '@/components/Profile';
-import { user } from '@/constants/TestUser';
+import { user } from '@/constants/TestData';
 
 export default function LeaderboardScreen() {
   const [selectedTab, setSelectedTab] = useState('crowns');

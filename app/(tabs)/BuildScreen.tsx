@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import Slider from '@react-native-community/slider';
 import { AttributeKeys, Attributes, Tendencies, TendencyKeys, User } from '@/constants/Types';
-import { user } from '@/constants/TestUser';
+import { user } from '@/constants/TestData';
 import Container from '@/components/Container';
 import { StyledText } from '@/components/StyledText';
 import Colors from '@/constants/Colors';
