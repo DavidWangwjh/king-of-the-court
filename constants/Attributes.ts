@@ -1,4 +1,4 @@
-import { Attributes, Build, Tendencies } from "./Types"
+import { ATTRIBUTE_KEY_TYPE, Attributes, Build, Tendencies } from "./Types"
 
 export const ProBuildBaseAttributes: Attributes = {
     'threePointShot': 25,
@@ -81,7 +81,35 @@ export const STARTER_BUILDS: Build[] = [
     {name: 'Shifty Slasher', attributes: ShiftySlasherBuildBaseAttributes}
 ]
 
-export const MAX_ATTRIBUTE_POINTS = 310;
-export const MAX_TENDENCIES = 100;
+export const ATTRIBUTE_NAME = {
+    THREE_POINT_SHOT: 'Three-Point Shot',
+    MID_RANGE_SHOT: 'Mid-Range Shot',
+    CLOSE_SHOT: 'Close Shot',
+    LAYUP: 'Layup',
+    BALL_HANDLE: 'Ball Handle',
+    INTERIOR_DEFENSE: 'Interior Defense',
+    PERIMETER_DEFENSE: 'Perimeter Defense',
+    STEAL: 'Steal',
+    BLOCK: 'Block',
+    SPEED: 'Speed',
+    STRENGTH: 'Strength',
+    STAMINA: 'Stamina',
+};
 
-export { Build }
+export const ATTRIBUTE_KEY: ATTRIBUTE_KEY_TYPE = {
+    THREE_POINT_SHOT: 'threePointShot',
+    MID_RANGE_SHOT: 'midRangeShot',
+    CLOSE_SHOT: 'closeShot',
+    LAYUP: 'layup',
+    BALL_HANDLE: 'ballHandle',
+    INTERIOR_DEFENSE: 'interiorDefense',
+    PERIMETER_DEFENSE: 'perimeterDefense',
+    STEAL: 'steal',
+    BLOCK: 'block',
+    SPEED: 'speed',
+    STRENGTH: 'strength',
+    STAMINA: 'stamina',
+};  
+
+export const BASE_ATTRIBUTE_POINTS = 300;
+export const MAX_ATTRIBUTE_POINTS = 800;

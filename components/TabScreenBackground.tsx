@@ -14,8 +14,8 @@ const TabScreenBackground = () => {
                 colors={[Colors.halfBlack, Colors.black]}
                 style={styles.background}
             />
-            <View style={styles.line}/>
-            <View style={styles.circle}/>
+            {/* <View style={styles.line}/>
+            <View style={styles.circle}/> */}
         </View>
     )
 }

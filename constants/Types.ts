@@ -26,6 +26,21 @@ export type AttributeKeys =
 | 'strength'
 | 'stamina';
 
+export type ATTRIBUTE_KEY_TYPE = {
+    THREE_POINT_SHOT: AttributeKeys,
+    MID_RANGE_SHOT: AttributeKeys,
+    CLOSE_SHOT: AttributeKeys,
+    LAYUP: AttributeKeys,
+    BALL_HANDLE: AttributeKeys,
+    INTERIOR_DEFENSE: AttributeKeys,
+    PERIMETER_DEFENSE: AttributeKeys,
+    STEAL: AttributeKeys,
+    BLOCK: AttributeKeys,
+    SPEED: AttributeKeys,
+    STRENGTH: AttributeKeys,
+    STAMINA: AttributeKeys,
+};  
+
 // Define the Attributes type with numeric values
 export type Attributes = {
     [key in AttributeKeys]: number;  // Map each attribute key to a number
@@ -36,6 +51,13 @@ export type TendencyKeys =
 | 'midRangeShot'
 | 'closeShot'
 | 'layup';
+
+export type TENDENCY_KEY_TYPE = {
+    THREE_POINT_SHOT: TendencyKeys,
+    MID_RANGE_SHOT: TendencyKeys,
+    CLOSE_SHOT: TendencyKeys,
+    LAYUP: TendencyKeys,
+};  
 
 export type Tendencies = {
     [key in TendencyKeys]: number;

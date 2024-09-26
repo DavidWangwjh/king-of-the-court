@@ -4,21 +4,23 @@ import Container from './Container'
 import { StyledText } from './StyledText'
 import Slider from '@react-native-community/slider'
 import Colors from '@/constants/Colors'
-import { STARTER_BUILD_BASE_ATTRIBUTES } from '@/constants/Attributes'
+import { STARTER_BUILD_BASE_ATTRIBUTES, MAX_ATTRIBUTE_POINTS } from '@/constants/Attributes'
+import { MAX_TENDENCIES } from '@/constants/Tendencies' 
 import { user } from '@/constants/TestData'
 import { AttributeKeys } from '@/constants/Types'
 
 type CustomSliderProps = {
+    type: 'attribute' | 'tendency'
     label: string,
     attributeKey: AttributeKeys,
     value: number,
     onValueChange: (val: number) => void,
-    upperLimit: number,
+    total: number,
 }
 
 const CustomSlider = (props: CustomSliderProps) => {
 
-    const {label, attributeKey, value, onValueChange, upperLimit} = props;
+    const { type, label, attributeKey, value, onValueChange, total } = props;
 
     return (
         <Container style={styles.sliderItem} >
@@ -35,8 +37,8 @@ const CustomSlider = (props: CustomSliderProps) => {
                 onValueChange={onValueChange}
                 minimumTrackTintColor={Colors.primaryOrange}
                 thumbTintColor={Colors.primaryOrange}
-                lowerLimit={STARTER_BUILD_BASE_ATTRIBUTES[user.starterBuild][attributeKey]}
-                upperLimit={upperLimit}
+                lowerLimit={type === 'attribute'? STARTER_BUILD_BASE_ATTRIBUTES[user.starterBuild][attributeKey] : 0}
+                upperLimit={type === 'attribute'? Math.min(value + MAX_ATTRIBUTE_POINTS - total, 100) :  Math.min(value + MAX_TENDENCIES - total, 100)}
             />
         </Container>
     )
