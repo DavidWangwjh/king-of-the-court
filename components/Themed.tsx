@@ -17,6 +17,7 @@ type TextDefaultProps = {
   weight?: number;
   color?: string;
   size?: number;
+  shadow?: boolean;
 }
 
 export type TextProps = ThemeProps & DefaultText['props'] & TextDefaultProps;

@@ -140,7 +140,7 @@ const BuildScreen = () => {
   }
 
   return (
-    <TabScreenContainer>
+    <TabScreenContainer style={{padding: 20, paddingBottom: 40, justifyContent: 'flex-start'}}>
       {/* Top Tab Selector */}
       <Container style={styles.tabContainer} direction='row'>
         <TouchableOpacity
@@ -169,9 +169,10 @@ const BuildScreen = () => {
           : `Tendencies Points Available: ${MAX_TENDENCIES - totalTendencies}/${MAX_TENDENCIES}`}
       </StyledText>
 
+      <Container style={{ height: '65%' }} justify='flex-start'>
       {/* Sliders Section */}
       {selectedTab === 'attributes' ? (
-        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1 }}>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <StyledText weight={4} size={20} style={styles.category}>Offense</StyledText>
           {/* <CustomSlider label="Three-Point Shot" attributeKey='threePointShot' value={attributes.threePointShot} onValueChange={(val: number) => handleAttributeChange('threePointShot', val)} upperLimit={100}/> */}
           <SliderItem
@@ -256,6 +257,7 @@ const BuildScreen = () => {
           />
         </View>
       )}
+      </Container>
 
       <ActionButton text='save' action={saveData}/>
     </TabScreenContainer>

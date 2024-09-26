@@ -25,7 +25,7 @@ export default function HomeScreen() {
   }, [])
 
   const goToSignInScreen = () => {
-    router.replace("/(auth)/SelectBuildScreen");
+    router.replace("/(auth)/SignInScreen");
   }
 
   const playGame = () => {

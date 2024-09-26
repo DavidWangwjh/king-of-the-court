@@ -34,7 +34,7 @@ export default function LeaderboardScreen() {
   const leaderboardChampionsResult = [user, user, user, user, user, user, user, user];
   
   return (
-    <TabScreenContainer>
+    <TabScreenContainer style={{padding: 20}}>
       <StyledText style={{width: '100%'}} size={36} weight={5}>Season 1</StyledText>
       <Container style={styles.tabContainer} direction='row'>
         <TouchableOpacity

@@ -13,5 +13,21 @@ const fontWeights: { [key: number]: string } = {
 
 export function StyledText(props: TextProps) {
   const validatedWeight = (props.weight && props.weight >= 1 && props.weight <= 7) ? props.weight : 3;
-  return <Text {...props} style={[props.style, { textAlign: 'center', fontFamily: fontWeights[validatedWeight], color: props.color?? Colors.white, fontSize: props.size?? 20}]} />;
+  return (
+    <Text {...props} 
+      style={[ 
+        props.style, 
+        { textAlign: 'center', 
+          fontFamily: fontWeights[validatedWeight], 
+          color: props.color?? Colors.white, 
+          fontSize: props.size?? 20,
+        },
+        props.shadow ? { 
+          textShadowColor: 'rgba(0, 0, 0, 0.7)',  // Shadow color
+          textShadowOffset: { width: 2, height: 3 },  // Shadow offset (horizontal and vertical)
+          textShadowRadius: 5, 
+        } : {},
+      ]}
+    />
+  );
 }
