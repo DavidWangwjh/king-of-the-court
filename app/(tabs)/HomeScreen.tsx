@@ -1,19 +1,15 @@
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity, Modal, TouchableWithoutFeedback } from 'react-native';
 import { useEffect, useState } from 'react';
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+import { View } from '@/components/Themed';
 import Profile from '@/components/Profile'
-import { getUser } from '@/service/AuthService'
 import { User } from '@/constants/Types';
 import Colors from '@/constants/Colors';
 import { StyledText } from '@/components/StyledText';
 import { Image } from 'expo-image';
 import basketball from "@/assets/basketball.png";
 import Container from '@/components/Container';
-import { LogOutIcon } from '@/assets/icons';
+import { AccountIcon, InfoIcon, LogOutIcon, MenuIcon } from '@/assets/icons';
 import { router } from "expo-router";
-import { LinearGradient } from 'expo-linear-gradient';
-import TabScreenBackground from '@/components/TabScreenBackground';
 import TabScreenContainer from '@/components/TabScreenContainer';
 import { useGlobalContext } from "@/context/GlobalProvider";
 
@@ -27,8 +23,20 @@ export default function HomeScreen() {
     setCurrentUser(user);
   }, [])
 
-  const goToSignInScreen = () => {
-    router.replace("/(auth)/SignInScreen");
+
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!modalVisible)
+  }
+
+  const handleAbout = () => {
+    toggleModal();
+  }
+
+  const handleLogOut = () => {
+    toggleModal();
+    router.push("/(auth)/SignInScreen");
   }
 
   const playGame = () => {
@@ -37,9 +45,53 @@ export default function HomeScreen() {
 
   return (
     <TabScreenContainer>
-      <TouchableOpacity style={styles.logOutButton} onPress={() => goToSignInScreen()}>
-        <LogOutIcon size={26} color={Colors.white}/>
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={modalVisible}
+      >
+        <TouchableWithoutFeedback onPress={toggleModal}>
+          <View style={styles.modelViewContainer}>
+            <TouchableWithoutFeedback>
+              <View style={styles.modalView}>
+                <TouchableOpacity 
+                  style={styles.menuItem}
+                  onPress={handleAbout}
+                >
+                  <Container style={{width: '20%',}}>
+                    <AccountIcon size={20} color={Colors.black}/>
+                  </Container>
+                  <StyledText size={16} weight={4} color={Colors.black} style={{width: '80%', textAlign: 'center'}}>Account</StyledText>
+                </TouchableOpacity>
+
+                <TouchableOpacity 
+                  style={styles.menuItem}
+                  onPress={handleAbout}
+                >
+                  <Container style={{width: '20%',}}>
+                    <InfoIcon size={20} color={Colors.black}/>
+                  </Container>
+                  <StyledText size={16} weight={4} color={Colors.black} style={{width: '80%', textAlign: 'center'}}>About</StyledText>
+                </TouchableOpacity>
+
+                <TouchableOpacity 
+                  style={styles.menuItem}
+                  onPress={handleLogOut}
+                >
+                  <Container style={{width: '20%',}}>
+                    <LogOutIcon size={20} color={Colors.black}/>
+                  </Container>
+                  <StyledText size={16} weight={4} color={Colors.black} style={{width: '80%', textAlign: 'center'}}>Log out</StyledText>
+                </TouchableOpacity>
+              </View>
+            </TouchableWithoutFeedback>
+          </View>
+        </TouchableWithoutFeedback>
+      </Modal>
+      <TouchableOpacity style={styles.menuButton} onPress={toggleModal}>
+        <MenuIcon size={30} color={Colors.white}/>
       </TouchableOpacity>
+      
       <StyledText style={styles.title} weight={7} size={36}>King of The Court</StyledText>
       <Profile user={currentUser} imageSize={70} iconSize={20} titleTextSize={24} contentTextSize={20} padding={10}/>
       <TouchableOpacity style={styles.playButton} onPress={playGame}>
@@ -75,9 +127,62 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%'
   },
-  logOutButton: {
+  menuButton: {
     position: 'absolute',
-    right: 10,
-    top: 5
+    right: 20,
+    top: 10
+  },
+
+  modelViewContainer: {
+    flex: 1,
+    width: '100%',
+    backgroundColor: Colors.halfBlack
+  },
+  modalView: {
+    position: 'absolute',
+    right: 20,
+    top: 100,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 10,
+    gap: 10,
+    width: 150,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+
+  menuItem: {
+    flexDirection: 'row',
+    borderBottomWidth: 2,
+    padding: 5, 
+    width: '100%'
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: '#F194FF',
+  },
+  buttonClose: {
+    backgroundColor: '#2196F3',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
   },
 });

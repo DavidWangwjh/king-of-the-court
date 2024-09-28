@@ -50,3 +50,24 @@ export function BackIcon(props: {
 }) {
   return <Ionicons name='chevron-back' {...props}/>;
 }
+
+export function MenuIcon(props: {
+  size: number;
+  color: string;
+}) {
+  return <MaterialIcons name='menu' {...props}/>;
+}
+
+export function AccountIcon(props: {
+  size: number;
+  color: string;
+}) {
+  return <MaterialIcons name='manage-accounts' {...props}/>;
+}
+
+export function InfoIcon(props: {
+  size: number;
+  color: string;
+}) {
+return <FontAwesome5 name='info-circle' {...props}/>;
+}

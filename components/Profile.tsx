@@ -58,7 +58,7 @@ export default function Profile (props: ProfileProps) {
                 </Container>
             </Container>
             ) : (
-                <StyledText>This user doesn't exist</StyledText>
+                <StyledText>User not found...</StyledText>
             )
         )
     )
