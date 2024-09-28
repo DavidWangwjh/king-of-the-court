@@ -23,6 +23,20 @@ export function HomeIcon(props: {
   return <Entypo name='home' {...props}/>;
 }
 
+export function HomeOutlineIcon(props: {
+  size: number;
+  color: string;
+}) {
+return <Ionicons name='home-outline' {...props}/>;
+}
+
+export function HomeFilledIcon(props: {
+  size: number;
+  color: string;
+}) {
+return <Ionicons name='home-sharp' {...props}/>;
+}
+
 export function CrownIcon(props: {
     size: number;
     color: string;
@@ -35,6 +49,20 @@ export function TrophyIcon(props: {
     color: string;
 }) {
   return <FontAwesome5 name='trophy' {...props}/>;
+}
+
+export function TrophyOutlineIcon(props: {
+  size: number;
+  color: string;
+}) {
+return <Ionicons name='trophy-outline' {...props}/>;
+}
+
+export function TrophyFilledIcon(props: {
+  size: number;
+  color: string;
+}) {
+return <Ionicons name='trophy-sharp' {...props}/>;
 }
 
 export function LogOutIcon(props: {
