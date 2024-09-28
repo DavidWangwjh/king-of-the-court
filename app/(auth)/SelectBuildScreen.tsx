@@ -51,7 +51,7 @@ const ListItem = (props: listItemProps) => {
                 <Container style={styles.buildTitleContainer} direction='row' bgColor={Colors.darkOrange}>
                     <StyledText size={22} weight={5}>{build.name}</StyledText>
                 </Container>
-                <StyledText size={20} weight={4}>Offense</StyledText>
+                <StyledText size={20} weight={4} style={{textDecorationLine: 'underline'}}>Offense</StyledText>
                 <Container style={{width: '100%'}} justify='space-between' direction='row'>
                     <StyledText size={16}>Three-Point Shot</StyledText>
                     <StyledText size={16}>{build.attributes.threePointShot}</StyledText>
@@ -72,7 +72,7 @@ const ListItem = (props: listItemProps) => {
                     <StyledText size={16}>Ball Handle</StyledText>
                     <StyledText size={16}>{build.attributes.ballHandle}</StyledText>
                 </Container>
-                <StyledText>Defense</StyledText>
+                <StyledText size={20} weight={4} style={{textDecorationLine: 'underline'}}>Defense</StyledText>
                 <Container style={{width: '100%'}} justify='space-between' direction='row'>
                     <StyledText size={16}>Interior Defense</StyledText>
                     <StyledText size={16}>{build.attributes.interiorDefense}</StyledText>
@@ -89,7 +89,7 @@ const ListItem = (props: listItemProps) => {
                     <StyledText size={16}>Block</StyledText>
                     <StyledText size={16}>{build.attributes.block}</StyledText>
                 </Container>
-                <StyledText>Athleticism</StyledText>
+                <StyledText size={20} weight={4} style={{textDecorationLine: 'underline'}}>Athleticism</StyledText>
                 <Container style={{width: '100%'}} justify='space-between' direction='row'>
                     <StyledText size={16}>Speed</StyledText>
                     <StyledText size={16}>{build.attributes.speed}</StyledText>
