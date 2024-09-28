@@ -1,4 +1,4 @@
-import { StyleSheet, TouchableOpacity, Dimensions } from 'react-native'
+import { StyleSheet, TouchableOpacity, Dimensions, ImageBackground } from 'react-native'
 import React from 'react'
 import { StyledText } from '@/components/StyledText'
 import Colors from '@/constants/Colors'
@@ -6,6 +6,8 @@ import { Image } from 'expo-image';
 import googleIcon from '@/assets/google-icon.png';
 import { router } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import splash from '@/assets/images/splash-new.png'
+import logo from '@/assets/kotc-logo.png'
 
 const { width, height } = Dimensions.get('screen')
 
@@ -16,8 +18,12 @@ const SignInScreen = () => {
   }
 
   return (
-    <SafeAreaView edges={['top']} style={{ flex: 1, width: '100%', justifyContent: 'flex-start', alignItems: 'center', backgroundColor: Colors.black}}>
-      <StyledText size={36} weight={7} color={Colors.primaryOrange} style={styles.title}>King of The Court</StyledText>
+    <SafeAreaView edges={['top']} style={styles.screenContainer}>
+      <Image
+        style={{width: width*0.8, height: width*0.8}}
+        source={logo}
+        transition={1000}
+      />
       <TouchableOpacity style={styles.signInButton} onPress={handleSignIn}>
         <Image
           style={styles.image}
@@ -33,9 +39,15 @@ const SignInScreen = () => {
 export default SignInScreen
 
 const styles = StyleSheet.create({
-  title: {
-    marginTop: height*0.3,
-    marginBottom: height*0.1,
+  screenContainer: { 
+    flex: 1, 
+    width: '100%', 
+    height: '100%', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    backgroundColor: Colors.black, 
+    gap: 50,
+    paddingBottom: 50
   },
   signInButton: {
     display: 'flex',

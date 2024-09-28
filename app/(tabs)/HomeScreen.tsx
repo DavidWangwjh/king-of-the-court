@@ -15,12 +15,15 @@ import { router } from "expo-router";
 import { LinearGradient } from 'expo-linear-gradient';
 import TabScreenBackground from '@/components/TabScreenBackground';
 import TabScreenContainer from '@/components/TabScreenContainer';
+import { useGlobalContext } from "@/context/GlobalProvider";
 
 export default function HomeScreen() {
+
+  const { user } = useGlobalContext();
+
   const [currentUser, setCurrentUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const user: User = getUser();
     setCurrentUser(user);
   }, [])
 

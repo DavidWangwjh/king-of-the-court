@@ -35,26 +35,22 @@ const GlobalProvider = (props: GlobalProviderProps) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // getCurrentUser()
-        //   .then((res) => {
-        //     if (res) {
-        //       setIsLogged(true);
-        //       setUser(res);
-        //     } else {
-        //       setIsLogged(false);
-        //       setUser(null);
-        //     }
-        //   })
-        //   .catch((error) => {
-        //     console.log(error);
-        //   })
-        //   .finally(() => {
-        //     setLoading(false);
-        //   });
-        const user: User = getUser();
-        setUser(user);
-        setIsLoggedIn(true);
-        setLoading(false);
+        getUser()
+          .then((res) => {
+            if (res) {
+              setIsLoggedIn(true);
+              setUser(res);
+            } else {
+              setIsLoggedIn(false);
+              setUser(null);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+          .finally(() => {
+            setLoading(false);
+          });
     }, []);
 
     return (
@@ -67,7 +63,7 @@ const GlobalProvider = (props: GlobalProviderProps) => {
                 loading,
             }}
         >
-        {children}
+            {children}
         </GlobalContext.Provider>
     );
 };

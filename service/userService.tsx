@@ -1,6 +1,6 @@
 import { User } from "@/constants/Types";
 
-export function getUser() {
+export async function getUser(): Promise<User> {
     let user: User = {
         'username': 'davidwang777',
         'profilePicture': '#0000FF',
@@ -31,5 +31,5 @@ export function getUser() {
             'layup': 25,
         }
     }
-    return user;
+    return Promise.resolve(user);
 }
