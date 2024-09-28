@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 import Profile from '@/components/Profile'
-import { getUser } from '@/service/userService'
+import { getUser } from '@/service/AuthService'
 import { User } from '@/constants/Types';
 import Colors from '@/constants/Colors';
 import { StyledText } from '@/components/StyledText';

@@ -6,15 +6,22 @@ import { Image } from 'expo-image';
 import googleIcon from '@/assets/google-icon.png';
 import { router } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import splash from '@/assets/images/splash-new.png'
 import logo from '@/assets/kotc-logo.png'
+import { signIn } from '@/service/AuthService';
 
 const { width, height } = Dimensions.get('screen')
 
 const SignInScreen = () => {
 
   const handleSignIn = () => {
-    router.replace('/(auth)/CreateUsernameScreen')
+    signIn()
+      .then((res) => {
+        if (res) {
+          router.replace('/(tabs)/HomeScreen')
+        } else {
+          router.replace('/(auth)/CreateUsernameScreen')
+        }
+      })
   }
 
   return (

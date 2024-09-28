@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-import { getUser } from "@/service/userService";
+import { getUser } from "@/service/AuthService";
 import { User } from "@/constants/Types";
 
 // Define a type for your context
@@ -35,22 +35,22 @@ const GlobalProvider = (props: GlobalProviderProps) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getUser()
-          .then((res) => {
-            if (res) {
-              setIsLoggedIn(true);
-              setUser(res);
-            } else {
-              setIsLoggedIn(false);
-              setUser(null);
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          })
-          .finally(() => {
-            setLoading(false);
-          });
+      getUser()
+        .then((res) => {
+          if (res) {
+            setIsLoggedIn(true);
+            setUser(res);
+          } else {
+            setIsLoggedIn(false);
+            setUser(null);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
     }, []);
 
     return (

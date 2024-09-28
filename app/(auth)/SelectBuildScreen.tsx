@@ -4,10 +4,12 @@ import Container from '@/components/Container'
 import { StyledText } from '@/components/StyledText'
 import Colors from '@/constants/Colors'
 import ActionButton from '@/components/ActionButton'
-import { STARTER_BUILDS, Build } from '@/constants/Attributes'
+import { STARTER_BUILDS } from '@/constants/Attributes'
 import Animated, { Extrapolation, SharedValue, interpolate, useAnimatedScrollHandler, useAnimatedStyle, useSharedValue } from 'react-native-reanimated'
 import Pagination from '@/components/Pagination'
 import { router } from 'expo-router'
+import { Build } from '@/constants/Types'
+import { setUserBuild } from '@/service/AuthService'
 
 const { width } = Dimensions.get('screen')
 
@@ -131,8 +133,11 @@ const SelectBuildScreen = () => {
         {viewabilityConfig, onViewableItemsChanged}
     ])
 
-    const goToHome = () => {
-        router.replace('/(tabs)/HomeScreen')
+    const handleSelect = () => {
+        setUserBuild(STARTER_BUILDS[paginationIndex])
+            .then((res) => {
+                router.replace('/(tabs)/HomeScreen')
+            })
     }
 
     return (
@@ -150,7 +155,7 @@ const SelectBuildScreen = () => {
                 />
             </Container>
             <Pagination builds={STARTER_BUILDS} paginationIndex={paginationIndex} scrollX={scrollX}/>
-            <ActionButton text='select' action={goToHome}/>
+            <ActionButton text='select' action={handleSelect}/>
         </Container>
     )
 }

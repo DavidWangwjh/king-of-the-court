@@ -6,15 +6,29 @@ import Container from '@/components/Container'
 import { router } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import ActionButton from '@/components/ActionButton'
+import { checkUsernameAvailable } from '@/service/AuthService'
 
 const { width, height } = Dimensions.get('screen')
 
 const CreateUsernameScreen = () => {
 
-  const [text, onChangeText] = useState('');
+  const [username, setUsername] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleCreateUsername = () => {
-    router.replace('/(auth)/SelectBuildScreen')
+    checkUsernameAvailable(username)
+      .then((res) => {
+        if (res) {
+          router.replace('/(auth)/SelectBuildScreen')
+        } else {
+          setShowAlert(true);
+        }
+      })
+  }
+
+  const onChangeText = (text: string) => {
+    setUsername(text)
+    setShowAlert(false);
   }
 
   return (
@@ -23,11 +37,11 @@ const CreateUsernameScreen = () => {
         <StyledText size={22} weight={5}>Create your username</StyledText>
         <TextInput
           style={styles.input}
-          onChangeText={onChangeText}
-          value={text}
+          onChangeText={(text: string) => onChangeText(text)}
+          value={username}
           autoCapitalize='none'
         />
-        <StyledText color={Colors.alertRed} size={16}>*username taken</StyledText>
+        { showAlert? <StyledText color={Colors.alertRed} size={16}>*username taken</StyledText> : <></>}
       </Container>
       <ActionButton text='Next' action={handleCreateUsername}/>
     </SafeAreaView>
