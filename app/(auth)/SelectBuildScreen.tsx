@@ -155,7 +155,7 @@ const SelectBuildScreen = () => {
                 />
             </Container>
             <Pagination builds={STARTER_BUILDS} paginationIndex={paginationIndex} scrollX={scrollX}/>
-            <ActionButton text='select' action={handleSelect}/>
+            <ActionButton text='select' action={handleSelect} style={{marginTop: 10}}/>
         </Container>
     )
 }

@@ -93,7 +93,7 @@ const BuildScreen = () => {
   }
 
   return (
-    <TabScreenContainer style={{padding: 20, paddingBottom: 40, justifyContent: 'flex-start'}}>
+    <TabScreenContainer style={styles.screenContainer}>
       {/* Top Tab Selector */}
       <Container style={styles.tabContainer} direction='row'>
         <TouchableOpacity
@@ -124,30 +124,36 @@ const BuildScreen = () => {
 
       <Container style={styles.slidersContainer} justify='flex-start'>
         {selectedTab === 'attributes' ? (
-          <ScrollView showsVerticalScrollIndicator={false} style={{width: '100%'}}>
-            <StyledText weight={4} size={20}>Offense</StyledText>
-            <CustomSlider type='attribute' label={ATTRIBUTE_NAME.THREE_POINT_SHOT} attributeKey={ATTRIBUTE_KEY.THREE_POINT_SHOT} value={attributes.threePointShot} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.THREE_POINT_SHOT, val)} total={totalAttributePoints}/>
-            <CustomSlider type='attribute' label={ATTRIBUTE_NAME.MID_RANGE_SHOT} attributeKey={ATTRIBUTE_KEY.MID_RANGE_SHOT} value={attributes.midRangeShot} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.MID_RANGE_SHOT, val)} total={totalAttributePoints}/>
-            <CustomSlider type='attribute' label={ATTRIBUTE_NAME.CLOSE_SHOT} attributeKey={ATTRIBUTE_KEY.CLOSE_SHOT} value={attributes.closeShot} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.CLOSE_SHOT, val)} total={totalAttributePoints}/>
-            <CustomSlider type='attribute' label={ATTRIBUTE_NAME.LAYUP} attributeKey={ATTRIBUTE_KEY.LAYUP} value={attributes.layup} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.LAYUP, val)} total={totalAttributePoints}/>
-            <CustomSlider type='attribute' label={ATTRIBUTE_NAME.BALL_HANDLE} attributeKey={ATTRIBUTE_KEY.BALL_HANDLE} value={attributes.ballHandle} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.BALL_HANDLE, val)} total={totalAttributePoints}/>
-            <StyledText weight={4} size={20}>Defense</StyledText>
-            <CustomSlider type='attribute' label={ATTRIBUTE_NAME.INTERIOR_DEFENSE} attributeKey={ATTRIBUTE_KEY.INTERIOR_DEFENSE} value={attributes.interiorDefense} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.INTERIOR_DEFENSE, val)} total={totalAttributePoints}/>
-            <CustomSlider type='attribute' label={ATTRIBUTE_NAME.PERIMETER_DEFENSE} attributeKey={ATTRIBUTE_KEY.PERIMETER_DEFENSE} value={attributes.perimeterDefense} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.PERIMETER_DEFENSE, val)} total={totalAttributePoints}/>
-            <CustomSlider type='attribute' label={ATTRIBUTE_NAME.STEAL} attributeKey={ATTRIBUTE_KEY.STEAL} value={attributes.steal} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.STEAL, val)} total={totalAttributePoints}/>
-            <CustomSlider type='attribute' label={ATTRIBUTE_NAME.BLOCK} attributeKey={ATTRIBUTE_KEY.BLOCK} value={attributes.block} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.BLOCK, val)} total={totalAttributePoints}/>
-            <StyledText weight={4} size={20}>Athleticism</StyledText>
-            <CustomSlider type='attribute' label={ATTRIBUTE_NAME.SPEED} attributeKey={ATTRIBUTE_KEY.SPEED} value={attributes.speed} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.SPEED, val)} total={totalAttributePoints}/>
-            <CustomSlider type='attribute' label={ATTRIBUTE_NAME.STRENGTH} attributeKey={ATTRIBUTE_KEY.STRENGTH} value={attributes.strength} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.STRENGTH, val)} total={totalAttributePoints}/>
-            <CustomSlider type='attribute' label={ATTRIBUTE_NAME.STAMINA} attributeKey={ATTRIBUTE_KEY.STAMINA} value={attributes.stamina} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.STAMINA, val)} total={totalAttributePoints}/>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <Container style={styles.slidersSubContainer}>
+              <StyledText weight={4} size={20}>Offense</StyledText>
+              <CustomSlider type='attribute' label={ATTRIBUTE_NAME.THREE_POINT_SHOT} attributeKey={ATTRIBUTE_KEY.THREE_POINT_SHOT} value={attributes.threePointShot} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.THREE_POINT_SHOT, val)} total={totalAttributePoints}/>
+              <CustomSlider type='attribute' label={ATTRIBUTE_NAME.MID_RANGE_SHOT} attributeKey={ATTRIBUTE_KEY.MID_RANGE_SHOT} value={attributes.midRangeShot} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.MID_RANGE_SHOT, val)} total={totalAttributePoints}/>
+              <CustomSlider type='attribute' label={ATTRIBUTE_NAME.CLOSE_SHOT} attributeKey={ATTRIBUTE_KEY.CLOSE_SHOT} value={attributes.closeShot} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.CLOSE_SHOT, val)} total={totalAttributePoints}/>
+              <CustomSlider type='attribute' label={ATTRIBUTE_NAME.LAYUP} attributeKey={ATTRIBUTE_KEY.LAYUP} value={attributes.layup} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.LAYUP, val)} total={totalAttributePoints}/>
+              <CustomSlider type='attribute' label={ATTRIBUTE_NAME.BALL_HANDLE} attributeKey={ATTRIBUTE_KEY.BALL_HANDLE} value={attributes.ballHandle} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.BALL_HANDLE, val)} total={totalAttributePoints}/>
+            </Container>
+            <Container style={styles.slidersSubContainer}>
+              <StyledText weight={4} size={20}>Defense</StyledText>
+              <CustomSlider type='attribute' label={ATTRIBUTE_NAME.INTERIOR_DEFENSE} attributeKey={ATTRIBUTE_KEY.INTERIOR_DEFENSE} value={attributes.interiorDefense} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.INTERIOR_DEFENSE, val)} total={totalAttributePoints}/>
+              <CustomSlider type='attribute' label={ATTRIBUTE_NAME.PERIMETER_DEFENSE} attributeKey={ATTRIBUTE_KEY.PERIMETER_DEFENSE} value={attributes.perimeterDefense} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.PERIMETER_DEFENSE, val)} total={totalAttributePoints}/>
+              <CustomSlider type='attribute' label={ATTRIBUTE_NAME.STEAL} attributeKey={ATTRIBUTE_KEY.STEAL} value={attributes.steal} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.STEAL, val)} total={totalAttributePoints}/>
+              <CustomSlider type='attribute' label={ATTRIBUTE_NAME.BLOCK} attributeKey={ATTRIBUTE_KEY.BLOCK} value={attributes.block} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.BLOCK, val)} total={totalAttributePoints}/>
+            </Container>
+            <Container style={styles.slidersSubContainer}>
+              <StyledText weight={4} size={20}>Athleticism</StyledText>
+              <CustomSlider type='attribute' label={ATTRIBUTE_NAME.SPEED} attributeKey={ATTRIBUTE_KEY.SPEED} value={attributes.speed} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.SPEED, val)} total={totalAttributePoints}/>
+              <CustomSlider type='attribute' label={ATTRIBUTE_NAME.STRENGTH} attributeKey={ATTRIBUTE_KEY.STRENGTH} value={attributes.strength} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.STRENGTH, val)} total={totalAttributePoints}/>
+              <CustomSlider type='attribute' label={ATTRIBUTE_NAME.STAMINA} attributeKey={ATTRIBUTE_KEY.STAMINA} value={attributes.stamina} onValueChange={(val: number) => handleAttributeChange(ATTRIBUTE_KEY.STAMINA, val)} total={totalAttributePoints}/>
+            </Container>
           </ScrollView>
         ) : (
-          <View>
+          <Container style={styles.slidersSubContainer}>
             <CustomSlider type='tendency' label={TENDENCY_NAME.THREE_POINT_SHOT} attributeKey={TENDENCY_KEY.THREE_POINT_SHOT} value={tendencies.threePointShot} onValueChange={(val: number) => handleTendencyChange(TENDENCY_KEY.THREE_POINT_SHOT, val)} total={totalTendencyPoints}/>
             <CustomSlider type='tendency' label={TENDENCY_NAME.MID_RANGE_SHOT} attributeKey={TENDENCY_KEY.MID_RANGE_SHOT} value={tendencies.midRangeShot} onValueChange={(val: number) => handleTendencyChange(TENDENCY_KEY.MID_RANGE_SHOT, val)} total={totalTendencyPoints}/>
             <CustomSlider type='tendency' label={TENDENCY_NAME.CLOSE_SHOT} attributeKey={TENDENCY_KEY.CLOSE_SHOT} value={tendencies.closeShot} onValueChange={(val: number) => handleTendencyChange(TENDENCY_KEY.CLOSE_SHOT, val)} total={totalTendencyPoints}/>
             <CustomSlider type='tendency' label={TENDENCY_NAME.LAYUP} attributeKey={TENDENCY_KEY.LAYUP} value={tendencies.layup} onValueChange={(val: number) => handleTendencyChange(TENDENCY_KEY.LAYUP, val)} total={totalTendencyPoints}/>
-          </View>
+          </Container>
         )}
       </Container>
 
@@ -160,10 +166,9 @@ export default BuildScreen;
 
 const styles = StyleSheet.create({
   screenContainer: {
-    display: 'flex', 
-    flex: 1, 
-    justifyContent: 'center', 
-    alignItems: 'center',
+    padding: 20, 
+    paddingBottom: 40, 
+    justifyContent: 'flex-start'
   },
   tabContainer: {
     marginBottom: 10,
@@ -182,12 +187,18 @@ const styles = StyleSheet.create({
   },
   slidersContainer: { 
     width: '100%', 
-    height: '70%',
-    marginVertical: 10, 
-    padding: 10, 
+    height: '75%',
+    marginTop: 10,
+    marginBottom: 20,
+    paddingHorizontal: 10, 
     borderWidth: 2, 
     backgroundColor: Colors.black,
     borderColor: Colors.white, 
     borderRadius: 10
   },
+  slidersSubContainer: {
+    width: '100%',
+    paddingTop: 10, 
+    gap: 5
+  }
 });

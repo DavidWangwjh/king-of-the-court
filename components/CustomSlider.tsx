@@ -23,7 +23,7 @@ const CustomSlider = (props: CustomSliderProps) => {
     const { type, label, attributeKey, value, onValueChange, total } = props;
 
     return (
-        <Container style={styles.sliderItem} >
+        <Container style={styles.sliderContainer} >
             <Container style={{width: '100%'}}  direction='row' justify='space-between'>
             <StyledText size={16}>{label}</StyledText>
             <StyledText size={16}>{value}</StyledText>
@@ -47,8 +47,8 @@ const CustomSlider = (props: CustomSliderProps) => {
 export default CustomSlider
 
 const styles = StyleSheet.create({
-    sliderItem: {
-        marginBottom: 10,
+    sliderContainer: {
+        width: '100%',
     },
     slider: {
         width: '100%'

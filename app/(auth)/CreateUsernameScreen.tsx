@@ -34,7 +34,7 @@ const CreateUsernameScreen = () => {
 
   return (
     <SafeAreaView edges={['top']} style={{ flex: 1, width: '100%', justifyContent: 'flex-start', alignItems: 'center', backgroundColor: Colors.black}}>
-      <Container align='flex-start' style={{width: '80%', marginTop: height*0.3}}>
+      <Container align='flex-start' style={{width: '80%', marginTop: height*0.3, marginBottom: 20}}>
         <StyledText size={22} weight={5}>Create your username</StyledText>
         <TextInput
           style={styles.input}

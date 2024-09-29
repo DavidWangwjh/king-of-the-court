@@ -7,6 +7,7 @@ import ActionButton from '@/components/ActionButton'
 import { router } from 'expo-router'
 import { gameLog, user } from '@/constants/TestData'
 import { CrownIcon } from '@/assets/icons'
+import SafeAreaContainer from '@/components/SafeAreaContainer'
 
 const GameInProgressScreen = () => {
 
@@ -69,8 +70,8 @@ const GameInProgressScreen = () => {
   }
 
   return (
-    <Container style={styles.screenContainer} bgColor={Colors.black} >
-      <StyledText weight={4} size={26} style={{marginBottom: 10}}>Game in progress</StyledText>
+    <SafeAreaContainer bgColor={Colors.black} >
+      <StyledText weight={4} size={26} >Game in progress</StyledText>
       <Container direction='col' style={styles.listContainer}>
         <FlatList
           ref={flatListRef}
@@ -80,32 +81,27 @@ const GameInProgressScreen = () => {
           )}
           showsVerticalScrollIndicator={false}
           onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
-          contentContainerStyle={{ paddingHorizontal: 10 }}
+          contentContainerStyle={{ paddingHorizontal: 5 }}
         />
       </Container>
       {
         gameFinished && <ActionButton text='Next' action={goToResult}/>
       }
-    </Container>
+    </SafeAreaContainer>
   )
 }
 
 export default GameInProgressScreen
 
 const styles = StyleSheet.create({
-  screenContainer: {
-    flex: 1
-  },
   listContainer: { 
-    width: '90%', 
+    width: '95%', 
     height: '70%', 
     borderWidth: 2, 
     borderColor: Colors.white, 
-    borderRadius: 10
-  },
-  listItemContainer: {
-    width: '100%',
-    marginVertical: 5
+    borderRadius: 10,
+    marginTop: 10,
+    marginBottom: 40
   },
   profilePictureContainer: {
     maxWidth: '20%',
