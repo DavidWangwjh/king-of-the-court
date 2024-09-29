@@ -1,4 +1,4 @@
-import { StyleSheet, TouchableOpacity, Modal, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, TouchableOpacity, Modal, TouchableWithoutFeedback, Dimensions } from 'react-native';
 import { useEffect, useState } from 'react';
 import { View } from '@/components/Themed';
 import Profile from '@/components/Profile'
@@ -12,8 +12,17 @@ import { AccountIcon, InfoIcon, LogOutIcon, MenuIcon } from '@/assets/icons';
 import { router } from "expo-router";
 import TabScreenContainer from '@/components/TabScreenContainer';
 import { useGlobalContext } from "@/context/GlobalProvider";
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
+
+  const insets = useSafeAreaInsets(); // Get the safe area insets
+
+  // Get the full screen height
+  const screenHeight = Dimensions.get('window').height;
+
+  // Calculate the height of the SafeAreaView
+  const safeAreaHeight = screenHeight - insets.top - insets.bottom;
 
   const { user } = useGlobalContext();
 
@@ -53,7 +62,7 @@ export default function HomeScreen() {
         <TouchableWithoutFeedback onPress={toggleModal}>
           <View style={styles.modelViewContainer}>
             <TouchableWithoutFeedback>
-              <View style={styles.modalView}>
+              <View style={[styles.modalView, {right: 20, top: insets.top + 40}]}>
                 <TouchableOpacity 
                   style={styles.menuItem}
                   onPress={handleAbout}
@@ -105,7 +114,6 @@ export default function HomeScreen() {
   );
 }
 
-
 const styles = StyleSheet.create({
   title: {
     lineHeight: 50,
@@ -130,9 +138,8 @@ const styles = StyleSheet.create({
   menuButton: {
     position: 'absolute',
     right: 20,
-    top: 10
+    top: 10,
   },
-
   modelViewContainer: {
     flex: 1,
     width: '100%',
@@ -140,8 +147,6 @@ const styles = StyleSheet.create({
   },
   modalView: {
     position: 'absolute',
-    right: 20,
-    top: 100,
     backgroundColor: 'white',
     borderRadius: 10,
     padding: 10,
