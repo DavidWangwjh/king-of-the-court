@@ -1,4 +1,4 @@
-import { ATTRIBUTE_KEY_TYPE, Attributes, Build, Tendencies } from "./Types"
+import { ATTRIBUTE_KEY_TYPE, Attributes, Build } from "./Types"
 
 export const ProBuildBaseAttributes: Attributes = {
     'threePointShot': 25,

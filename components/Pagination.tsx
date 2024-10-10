@@ -1,6 +1,6 @@
 import { Dimensions, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { Build } from '@/constants/Attributes'
+import { Build } from '@/constants/Types'
 import Animated, { Extrapolation, SharedValue, interpolate, useAnimatedStyle } from 'react-native-reanimated'
 import Container from './Container'
 import Colors from '@/constants/Colors'
